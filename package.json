@@ -19,10 +19,12 @@
     "cloudinary": "^1.19.0",
     "dotenv": "^8.2.0",
     "handlebars": "^4.7.3",
+    "lodash": "^4.17.15",
     "mais-mongoose-seeder": "^1.0.7",
     "mongoose": "^5.9.1"
   },
   "devDependencies": {
+    "axios": "^0.19.2",
     "chai": "^4.2.0",
     "mocha": "^7.2.0",
     "prettier": "^1.19.1"
