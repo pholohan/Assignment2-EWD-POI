@@ -1,0 +1,59 @@
+{
+  "poiService": "http://localhost:3000",
+  "users": [
+    {
+      "firstName": "Homer",
+      "lastName": "Simpson",
+      "email": "homer@simpson.com",
+      "password": "secret"
+    },
+    {
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "email": "marge@simpson.com",
+      "password": "secret"
+    },
+    {
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "email": "bart@simpson.com",
+      "password": "secret"
+    }
+  ],
+  "stadiums": [
+    {
+      "name": "Croke Park",
+      "county": "Dublin",
+      "capacity": 85000,
+      "province": "Leinster",
+      "stadiumURL": "https://res.cloudinary.com/dbywou1bu/image/upload/v1582974708/5e4f0587b0e30f1f2c9a04a0.jpg"
+    },
+    {
+      "name": "Walsh Park",
+      "county": "Waterford",
+      "capacity": 10000,
+      "province": "Munster",
+      "stadiumURL": "https://res.cloudinary.com/dbywou1bu/image/upload/v1582974925/5e5a47768203fd1d54d96c0e.jpg"
+    },
+    {
+      "name": "Semple Stadium",
+      "county": "Tipperary",
+      "capacity": 50000,
+      "province": "Munster",
+      "stadiumURL": "https://res.cloudinary.com/dbywou1bu/image/upload/v1582995761/5e5a48b90d78020c38c2293e.jpg"
+    }
+  ],
+  "newStadium": {
+    "name": "Tuam Stadium",
+    "county": "Galway",
+    "capacity": 6700,
+    "province": "Connacht",
+    "stadiumURL": "http://res.cloudinary.com/dbywou1bu/image/upload/v1583574946/5e636e30aeaa621834d7ef46.jpg"
+  },
+  "newUser": {
+    "firstName": "Maggie",
+    "lastName": "Simpson",
+    "email": "maggie@simpson.com",
+    "password": "secret"
+  }
+}
