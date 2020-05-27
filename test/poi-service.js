@@ -22,8 +22,8 @@ class POIService {
     }
   }
 
-  async createStadium(newCandidate) {
-    const response = await axios.post(this.baseUrl + '/api/stadium', newStadium);
+  async createStadium(newStadium) {
+    const response = await axios.post(this.baseUrl + '/api/stadiums', newStadium);
     return response.data;
   }
 
@@ -33,7 +33,7 @@ class POIService {
   }
 
   async deleteOneStadium(id) {
-    const response = await axios.delete(this.baseUrl + '/api/stadium/' + id);
+    const response = await axios.delete(this.baseUrl + '/api/stadiums/' + id);
     return response.data;
   }
 
@@ -65,7 +65,6 @@ class POIService {
     const response = await axios.delete(this.baseUrl + '/api/users/' + id);
     return response.data;
   }
-
 }
 
 module.exports = POIService;

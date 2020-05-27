@@ -2,75 +2,75 @@
 
 const assert = require('chai').assert;
 const POIService = require('./poi-service');
-const fixtures = require('./fixtures.json');
+const fixtures = require('./fixture.json');
 const _ = require('lodash');
 
-suite('Candidate API tests', function () {
+suite('Stadiums API tests', function () {
 
-  let candidates = fixtures.candidates;
-  let newCandidate = fixtures.newCandidate;
+  let stadiums = fixtures.stadiums;
+  let newStadium = fixtures.newStadium;
 
-  const donationService = new DonationService(fixtures.donationService);
+  const poiService = new POIService(fixtures.poiService);
 
   setup(async function () {
-    await donationService.deleteAllCandidates();
+    await poiService.deleteAllStadiums();
   });
 
   teardown(async function () {
-    await donationService.deleteAllCandidates();
+    await poiService.deleteAllStadiums();
   });
 
-  test('create a candidate', async function () {
-    const returnedCandidate = await donationService.createCandidate(newCandidate);
-    assert(_.some([returnedCandidate], newCandidate), 'returnedCandidate must be a superset of newCandidate');
-    assert.isDefined(returnedCandidate._id);
+  test('create a stadium', async function () {
+    const returnedStadium = await poiService.createStadium(newStadium);
+    assert(_.some([returnedStadium], newStadium), 'returnedStadium must be a superset of newStadium');
+    assert.isDefined(returnedStadium._id);
   });
 
-  test('get candidate', async function () {
-    const c1 = await donationService.createCandidate(newCandidate);
-    const c2 = await donationService.getCandidate(c1._id);
-    assert.deepEqual(c1, c2);
+  test('get stadium', async function () {
+    const s1 = await poiService.createStadium(newStadium);
+    const s2 = await poiService.getStadium(s1._id);
+    assert.deepEqual(s1, s2);
   });
 
-  test('get invalid candidate', async function () {
-    const c1 = await donationService.getCandidate('1234');
-    assert.isNull(c1);
-    const c2 = await donationService.getCandidate('012345678901234567890123');
-    assert.isNull(c2);
+  test('get invalid stadium', async function () {
+    const s1 = await poiService.getStadium('1234');
+    assert.isNull(s1);
+    const s2 = await poiService.getStadium('012345678901234567890123');
+    assert.isNull(s2);
   });
 
 
-  test('delete a candidate', async function () {
-    let c = await donationService.createCandidate(newCandidate);
-    assert(c._id != null);
-    await donationService.deleteOneCandidate(c._id);
-    c = await donationService.getCandidate(c._id);
-    assert(c == null);
+  test('delete a stadium', async function () {
+    let s = await poiService.createStadium(newStadium);
+    assert(s._id != null);
+    await poiService.deleteOneStadium(s._id);
+    s = await poiService.getStadium(s._id);
+    assert(s == null);
   });
 
-  test('get all candidates', async function () {
-    for (let c of candidates) {
-      await donationService.createCandidate(c);
+  test('get all stadiums', async function () {
+    for (let s of stadiums) {
+      await poiService.createStadium(s);
     }
 
-    const allCandidates = await donationService.getCandidates();
-    assert.equal(allCandidates.length, candidates.length);
+    const allStadiums = await poiService.getStadiums();
+    assert.equal(allStadiums.length, stadiums.length);
   });
 
-  test('get candidates detail', async function () {
-    for (let c of candidates) {
-      await donationService.createCandidate(c);
+  test('get stadiums detail', async function () {
+    for (let s of stadiums) {
+      await poiService.createStadium(s);
     }
 
-    const allCandidates = await donationService.getCandidates();
-    for (var i = 0; i < candidates.length; i++) {
-      assert(_.some([allCandidates[i]], candidates[i]), 'returnedCandidate must be a superset of newCandidate');
+    const allStadiums = await poiService.getStadiums();
+    for (var i = 0; i < stadiums.length; i++) {
+      assert(_.some([allStadiums[i]], stadiums[i]), 'returnedStadiums must be a superset of newStadiums');
     }
   });
 
-  test('get all candidates empty', async function () {
-    const allCandidates = await donationService.getCandidates();
-    assert.equal(allCandidates.length, 0);
+  test('get all stadiums empty', async function () {
+    const allStadiums = await poiService.getStadiums();
+    assert.equal(allStadiums.length, 0);
   });
 });
 
