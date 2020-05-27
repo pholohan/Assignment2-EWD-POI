@@ -65,6 +65,35 @@ class POIService {
     const response = await axios.delete(this.baseUrl + '/api/users/' + id);
     return response.data;
   }
+  async getAdmins() {
+    const response = await axios.get(this.baseUrl + '/api/admins');
+    return response.data;
+  }
+
+  async getAdmin(id) {
+    try {
+      const response = await axios.get(this.baseUrl + '/api/admins/' + id);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async createAdmin(newAdmin) {
+    const response = await axios.post(this.baseUrl + '/api/admins', newAdmin);
+    return response.data;
+  }
+
+  async deleteAllAdmins() {
+    const response = await axios.delete(this.baseUrl + '/api/admins');
+    return response.data;
+  }
+
+  async deleteOneAdmin(id) {
+    const response = await axios.delete(this.baseUrl + '/api/admins/' + id);
+    return response.data;
+  }
+
 }
 
 module.exports = POIService;
