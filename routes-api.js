@@ -1,5 +1,6 @@
 const Stadiums = require('./app/api/stadiums');
 const Users = require('./app/api/users');
+const Admins = require('./app/api/admins');
 
 module.exports = [
   { method: 'GET', path: '/api/stadiums', config: Stadiums.find },
@@ -14,9 +15,9 @@ module.exports = [
   { method: 'DELETE', path: '/api/users/{id}', config: Users.deleteOne },
   { method: 'DELETE', path: '/api/users', config: Users.deleteAll },
 
-//  { method: 'GET', path: '/api/donations', config: Donations.findAll },
-//  { method: 'GET', path: '/api/candidates/{id}/donations', config: Donations.findByCandidate },
-//  { method: 'POST', path: '/api/candidates/{id}/donations', config: Donations.makeDonation },
-//  { method: 'DELETE', path: '/api/candidates/{id}/donations', config: Donations.deleteOne },
-//  { method: 'DELETE', path: '/api/donations', config: Donations.deleteAll },
+  { method: 'GET', path: '/api/admins', config: Admins.find },
+  { method: 'GET', path: '/api/admins/{id}', config: Admins.findOne },
+  { method: 'POST', path: '/api/admins', config: Admins.create },
+  { method: 'DELETE', path: '/api/admins/{id}', config: Admins.deleteOne },
+  { method: 'DELETE', path: '/api/admins', config: Admins.deleteAll },
 ];
