@@ -43,6 +43,20 @@
       "stadiumURL": "https://res.cloudinary.com/dbywou1bu/image/upload/v1582995761/5e5a48b90d78020c38c2293e.jpg"
     }
   ],
+  "admins": [
+    {
+      "firstName": "Lisa",
+      "lastName": "Simpson",
+      "email": "lisa@simpson.com",
+      "password": "secret"
+    },
+    {
+      "firstName": "Barack",
+      "lastName": "Obama",
+      "email": "barack@whitehouse.com",
+      "password": "secret"
+    }
+  ],
   "newStadium": {
     "name": "Tuam Stadium",
     "county": "Galway",
@@ -54,6 +68,12 @@
     "firstName": "Maggie",
     "lastName": "Simpson",
     "email": "maggie@simpson.com",
+    "password": "secret"
+  },
+  "newAdmin": {
+    "firstName": "Donald",
+    "lastName": "Trump",
+    "email": "donald@whitehouse.com",
     "password": "secret"
   }
 }
