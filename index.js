@@ -24,6 +24,7 @@ async function init() {
     await server.register(require('@hapi/vision'));
     await server.register(require('@hapi/cookie'));
     await server.validator(require('@hapi/joi'));
+    await server.register(require('disinfect'));
 
     ImageStore.configure(credentials);
 

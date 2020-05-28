@@ -37,6 +37,11 @@ const Stadiums = {
             })
             await newStadium.save();
             return h.redirect('/report');
+        },
+        plugins: {
+            disinfect: {
+                disinfectPayload: true //Use of disinfectPayLoad to sanitize the inputs from Sign Up page
+            }
         }
     },
 
