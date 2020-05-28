@@ -66,10 +66,15 @@ const Accounts = {
             }catch(err){
                 return h.view('signup', { errors: [{ message: err.message }] });
             }
+        },
+        plugins: {
+            disinfect: {
+                disinfectPayload: true //Use of disinfectPayLoad to sanitize the inputs from Sign Up page
+            }
         }
     },
 
-    showLogin: {
+  showLogin: {
         auth: false,
         handler: function(request, h) {
             return h.view('login', { title: 'Login to GAA Stadiums' });
@@ -119,6 +124,11 @@ const Accounts = {
                 }
             } catch (err) {
                 return h.view('login', { errors: [{ message: err.message }] });
+            }
+        },
+        plugins: {
+            disinfect: {
+                disinfectPayload: true //Section 3.e Use of disinfectPayLoad to sanitize the inputs from Sign Up page
             }
         }
     },
@@ -172,7 +182,12 @@ const Accounts = {
                 } catch (err) {
                     return h.view('main', { errors: [{ message: err.message }] });
                 }
+            },
+        plugins: {
+            disinfect: {
+                disinfectPayload: true //Use of disinfectPayLoad to sanitize the inputs from Sign Up page
             }
+        }
         },
 
     userreport: {
@@ -246,6 +261,11 @@ const Accounts = {
                 return h.redirect('/userreport');
             } catch (err) {
                 return h.view('main', { errors: [{ message: err.message }] });
+            }
+        },
+        plugins: {
+            disinfect: {
+                disinfectPayload: true //Section 3.e Use of disinfectPayLoad to sanitize the inputs from Sign Up page
             }
         }
     },
