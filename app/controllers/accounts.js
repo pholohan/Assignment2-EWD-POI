@@ -118,14 +118,24 @@ const Accounts = {
                     throw Boom.unauthorized(message);
                 }
                 if(user) {
-                    user.comparePassword(password);
+                    if(!await user.comparePassword(password)){
+                        const message = 'Password mismatch';
+                        throw Boom.unauthorized(message);
+                    }
+                    else{
                     request.cookieAuth.set({ id: user.id });
                     return h.redirect('/report');
+                    }
                 }
                 else if(admin){
-                    admin.comparePassword(password);
-                    request.cookieAuth.set({ id: admin.id });
-                    return h.redirect('/userreport');
+                    if(!await admin.comparePassword(password)){
+                        const message = 'Password mismatch';
+                        throw Boom.unauthorized(message);
+                    }
+                    else{
+                        request.cookieAuth.set({ id: admin.id });
+                        return h.redirect('/userreport');
+                    }
                 }
             } catch (err) {
                 return h.view('login', { errors: [{ message: err.message }] });
