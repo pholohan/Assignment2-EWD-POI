@@ -18,10 +18,7 @@ adminSchema.statics.findByEmail = function(email) {
 
 adminSchema.methods.comparePassword = async function(candidatePassword) {
   const isMatch = await bcrypt.compare(candidatePassword, this.password);
-  if (!isMatch) {
-    throw Boom.unauthorized('Password mismatch');
-  }
-  return this;
+  return isMatch;
 };
 
 module.exports = Mongoose.model('Admin', adminSchema);
