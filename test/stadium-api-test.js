@@ -46,6 +46,14 @@ suite('Stadiums API tests', function () {
     assert.deepEqual(s1, s2);
   });
 
+  test('get user stadiums', async function () {
+    for (let s of stadiums) {
+      await poiService.createStadium(s);
+    }
+    const userstadiums = await poiService.getUserStadiums();
+    assert.equal(stadiums.contributer, userstadiums.contributer);
+  });
+
   test('get invalid stadium', async function () {
     const s1 = await poiService.getStadium('1234');
     assert.isNull(s1);

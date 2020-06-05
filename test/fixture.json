@@ -62,7 +62,8 @@
     "county": "Galway",
     "capacity": 6700,
     "province": "Connacht",
-    "stadiumURL": "http://res.cloudinary.com/dbywou1bu/image/upload/v1583574946/5e636e30aeaa621834d7ef46.jpg"
+    "stadiumURL": "http://res.cloudinary.com/dbywou1bu/image/upload/v1583574946/5e636e30aeaa621834d7ef46.jpg",
+    "contributer": "5eda92b4089cd820c48b5faf"
   },
   "newUser": {
     "firstName": "Maggie",
