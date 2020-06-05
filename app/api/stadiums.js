@@ -5,14 +5,18 @@ const Boom = require('@hapi/boom');
 
 const Stadiums = {
   find: {
-    auth: false,
+    auth: {
+      strategy: 'jwt',
+    },
     handler: async function(request, h) {
       const stadiums = await Stadium.find();
       return stadiums;
     }
   },
   findOne: {
-    auth: false,
+    auth: {
+      strategy: 'jwt',
+    },
     handler: async function(request, h) {
       try {
         const stadium = await Stadium.findOne({ _id: request.params.id });
@@ -26,7 +30,9 @@ const Stadiums = {
     }
   },
   create: {
-    auth: false,
+    auth: {
+      strategy: 'jwt',
+    },
     handler: async function(request, h) {
       const newStadium = new Stadium(request.payload);
       const stadium = await newStadium.save();
@@ -38,7 +44,9 @@ const Stadiums = {
   },
 
   deleteAll: {
-    auth: false,
+    auth: {
+      strategy: 'jwt',
+    },
     handler: async function(request, h) {
       await Stadium.remove({});
       return { success: true };
@@ -46,7 +54,9 @@ const Stadiums = {
   },
 
   deleteOne: {
-    auth: false,
+    auth: {
+      strategy: 'jwt',
+    },
     handler: async function(request, h) {
       const response = await Stadium.deleteOne({ _id: request.params.id });
       if (response.deletedCount == 1) {

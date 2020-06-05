@@ -12,6 +12,20 @@ suite('Stadiums API tests', function () {
 
   const poiService = new POIService(fixtures.poiService);
 
+  let newUser = fixtures.newUser;
+
+
+  suiteSetup(async function() {
+    await poiService.deleteAllUsers();
+    const returnedUser = await poiService.createUser(newUser);
+    const response = await poiService.authenticate(newUser);
+  });
+
+  suiteTeardown(async function() {
+    await poiService.deleteAllUsers();
+    poiService.clearAuth();
+  });
+
   setup(async function () {
     await poiService.deleteAllStadiums();
   });

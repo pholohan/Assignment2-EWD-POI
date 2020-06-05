@@ -2,6 +2,7 @@
 
 const ImageStore = require('./app/utils/image-store');
 const Hapi = require('@hapi/hapi');
+const utils = require('./app/api/utils.js');
 const result = require('dotenv').config();
 if (result.error) {
     console.log('Error reading env file', result.error)
@@ -10,7 +11,8 @@ if (result.error) {
 require('./app/models/db');
 
 const server = Hapi.server({
-    port: process.env.PORT||3000
+    port: process.env.PORT||3000,
+    routes:{cors:true}
 });
 
 const credentials = {
@@ -25,6 +27,7 @@ async function init() {
     await server.register(require('@hapi/cookie'));
     await server.validator(require('@hapi/joi'));
     await server.register(require('disinfect'));
+    await server.register(require('hapi-auth-jwt2'));
 
     ImageStore.configure(credentials);
 
@@ -49,6 +52,11 @@ async function init() {
         redirectTo: '/',
     });
 
+    server.auth.strategy('jwt', 'jwt', {
+        key: 'secretpasswordnotrevealedtoanyone',
+        validate: utils.validate,
+        verifyOptions: { algorithms: ['HS256'] },
+    });
 
     server.auth.default('session');
 
