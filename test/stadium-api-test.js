@@ -36,7 +36,7 @@ suite('Stadiums API tests', function () {
 
   test('create a stadium', async function () {
     const returnedStadium = await poiService.createStadium(newStadium);
-    assert(_.some([returnedStadium], newStadium), 'returnedStadium must be a superset of newStadium');
+    assert(returnedStadium, newStadium);
     assert.isDefined(returnedStadium._id);
   });
 
@@ -86,7 +86,7 @@ suite('Stadiums API tests', function () {
 
     const allStadiums = await poiService.getStadiums();
     for (var i = 0; i < stadiums.length; i++) {
-      assert(_.some([allStadiums[i]], stadiums[i]), 'returnedStadiums must be a superset of newStadiums');
+      assert(allStadiums[i], stadiums[i]);
     }
   });
 

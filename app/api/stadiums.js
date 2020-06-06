@@ -47,18 +47,17 @@ const Stadiums = {
       strategy: 'jwt',
     },
     handler: async function(request, h) {
-      const userid = utils.getUserIdFromRequest(request);
       const data = request.payload;
       const newStadium = new Stadium({
-          name: data.name,
-          county: data.county,
-          capacity: data.capacity,
-          province: data.province,
-          stadiumURL: '',
-          contributer: userid
-        });
-       const stadium = await newStadium.save();
-       if (stadium) {
+        name: data.name,
+        county: data.county,
+        capacity: data.capacity,
+        province: data.province,
+        stadiumURL: '',
+        contributer: utils.getUserIdFromRequest(request)
+      });
+      const stadium = await newStadium.save();
+      if (stadium) {
         return h.response(stadium).code(201);
       }
       return Boom.badImplementation('error creating stadium');
