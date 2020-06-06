@@ -2,6 +2,7 @@
 
 const Stadium = require('../models/stadium');
 const Boom = require('@hapi/boom');
+const utils = require('./utils.js');
 
 const Stadiums = {
   find: {
@@ -13,6 +14,18 @@ const Stadiums = {
       return stadiums;
     }
   },
+
+  findUserStadiums: {
+    auth: {
+      strategy: 'jwt',
+    },
+    handler: async function(request, h) {
+      const userid = utils.getUserIdFromRequest(request);
+      const userstadiums = await Stadium.find({contributer: userid});
+      return userstadiums;
+    }
+  },
+
   findOne: {
     auth: {
       strategy: 'jwt',
@@ -34,7 +47,15 @@ const Stadiums = {
       strategy: 'jwt',
     },
     handler: async function(request, h) {
-      const newStadium = new Stadium(request.payload);
+      const data = request.payload;
+      const newStadium = new Stadium({
+        name: data.name,
+        county: data.county,
+        capacity: data.capacity,
+        province: data.province,
+        stadiumURL: '',
+        contributer: utils.getUserIdFromRequest(request)
+      });
       const stadium = await newStadium.save();
       if (stadium) {
         return h.response(stadium).code(201);

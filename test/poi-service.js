@@ -13,6 +13,11 @@ class POIService {
     return response.data;
   }
 
+  async getUserStadiums() {
+    const response = await axios.get(this.baseUrl + '/api/userstadiums');
+    return response.data;
+  }
+
   async getStadium(id) {
     try {
       const response = await axios.get(this.baseUrl + '/api/stadiums/' + id);
