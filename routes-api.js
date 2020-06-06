@@ -5,6 +5,7 @@ const Admins = require('./app/api/admins');
 module.exports = [
   { method: 'GET', path: '/api/stadiums', config: Stadiums.find },
   { method: 'GET', path: '/api/stadiums/{id}', config: Stadiums.findOne },
+  { method: 'GET', path: '/api/userstadiums', config: Stadiums.findUserStadiums },
   { method: 'POST', path: '/api/stadiums', config: Stadiums.create },
   { method: 'DELETE', path: '/api/stadiums/{id}', config: Stadiums.deleteOne },
   { method: 'DELETE', path: '/api/stadiums', config: Stadiums.deleteAll },
